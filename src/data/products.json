@@ -1,0 +1,42 @@
+{
+    "data": {
+        "items": [
+            {
+                "name": "Combo Ala Jabón Liquido para Diluir 500ml x4 + Vivere Violetas y Flores Blancas 3lt x4",
+                "category": "Jabon para Ropa",
+                "id": "1",
+                "marca": "Ala",
+                "Stock": 10,
+                "images": "https://clubdebeneficios.com/media/catalog/product/2/8/28.png",
+                "price": 1000
+            },
+            {
+                "name": "Combo Ala Jabón Liquido para Diluir 500ml x4 + Vivere Clasico 3lt x4",
+                "category": "Jabon para Ropa",
+                "id": "2",
+                "marca": "Ala",
+                "Stock": 5,
+                "images": "https://clubdebeneficios.com/media/catalog/product/2/6/26.png",
+                "price": 2000
+            },
+            {
+                "name": "HOLA",
+                "category": "HOLA",
+                "id": "2",
+                "marca": "Ala",
+                "Stock": 5,
+                "images": "https://clubdebeneficios.com/media/catalog/product/2/6/26.png",
+                "price": 2000
+            },
+            {
+                "name": "Combo Skip para diluir + detergente Cif",
+                "category": "Jabon para Ropa",
+                "id": "3",
+                "marca": "Skip",
+                "Stock": 15,
+                "images": "https://clubdebeneficios.com/media/catalog/product/s/k/skip_cif.png",
+                "price": 1100
+            }
+        ]
+    }
+}
