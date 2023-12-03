@@ -14,7 +14,9 @@ const PageProductCategory = () => {
         <>
             <NavbarPage />
             <div className="container">
-                <h2>Productos por categoría</h2>
+                <h2>
+                    {categoryId.toUpperCase()}
+                </h2>
                 <div className="row">
                     {products.map((product) => {
                         return (
