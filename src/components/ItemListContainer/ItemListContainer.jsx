@@ -8,7 +8,7 @@ const getItems = () => {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve(items);
-        }, 500);
+        }, 0);
     });
 }
 // eslint-disable-next-line react/prop-types

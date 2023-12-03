@@ -9,15 +9,17 @@ const NavbarPage = () => {
         <div>
             <Navbar expand="lg" className="bg-body-tertiary">
                 <Container fluid>
-                    <Navbar.Brand href="#">
-                        <img
-                            src="https://clubdebeneficios.com/static/version1696956463/frontend/ClubDeBeneficios/default/es_AR/images/logo.svg"
-                            alt="Club de Beneficios"
-                            width="120"
-                            height="45"
-                            className="d-inline-block align-text-top"
-                        />
-                    </Navbar.Brand>
+                    <Link to="/" className="navbar-brand">
+                        <Navbar.Brand>
+                            <img
+                                src="https://clubdebeneficios.com/static/version1696956463/frontend/ClubDeBeneficios/default/es_AR/images/logo.svg"
+                                alt="Club de Beneficios"
+                                width="120"
+                                height="45"
+                                className="d-inline-block align-text-top"
+                            />
+                        </Navbar.Brand>
+                    </Link>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <Nav
@@ -26,7 +28,7 @@ const NavbarPage = () => {
                             navbarScroll
                         >
                             <NavDropdown title="CATEGORÍAS" id="navbarScrollingDropdown">
-                                <NavDropdown.Item href="#action3">
+                                <Link to="/category/combos" className="dropdown-item">
                                     <img
                                         src="https://clubdebeneficios.com/media/catalog/category/combos_.png"
                                         alt="Club de Beneficios"
@@ -37,8 +39,8 @@ const NavbarPage = () => {
                                     <span className="ms-2">
                                         Combos
                                     </span>
-                                </NavDropdown.Item>
-                                <NavDropdown.Item href="#action4">
+                                </Link>
+                                <Link to="/category/almacen" className="dropdown-item">
                                     <img
                                         src="https://clubdebeneficios.com/media/catalog/category/almacen_1_.png"
                                         alt="Club de Beneficios"
@@ -49,8 +51,8 @@ const NavbarPage = () => {
                                     <span className="ms-2">
                                         Almacén
                                     </span>
-                                </NavDropdown.Item>
-                                <NavDropdown.Item href="#action5">
+                                </Link>
+                                <Link to="/category/bebidas" className="dropdown-item">
                                     <img
                                         src="https://clubdebeneficios.com/media/catalog/category/Bebidas_A.png"
                                         alt="Club de Beneficios"
@@ -61,8 +63,8 @@ const NavbarPage = () => {
                                     <span className="ms-2">
                                         Bebidas
                                     </span>
-                                </NavDropdown.Item>
-                                <Link to="/category/Jabon para Ropa" className="dropdown-item">
+                                </Link>
+                                <Link to="/category/jabon-ropa" className="dropdown-item">
                                     <img
                                         src="https://clubdebeneficios.com/media/catalog/category/cuiado_de_la_ropa_.png"
                                         alt="Club de Beneficios"
@@ -74,7 +76,7 @@ const NavbarPage = () => {
                                         Cuidado de la Ropa
                                     </span>
                                 </Link>
-                                <NavDropdown.Item href="#action7">
+                                <Link to="/category/limpieza" className="dropdown-item">
                                     <img
                                         src="https://clubdebeneficios.com/media/catalog/category/limpieza.png"
                                         alt="Club de Beneficios"
@@ -85,8 +87,8 @@ const NavbarPage = () => {
                                     <span className="ms-2">
                                         Limpieza
                                     </span>
-                                </NavDropdown.Item>
-                                <NavDropdown.Item href="#action8">
+                                </Link>
+                                <Link to="/category/perfumeria" className="dropdown-item">
                                     <img
                                         src="https://clubdebeneficios.com/media/catalog/category/Perfumeria_1_.png"
                                         alt="Club de Beneficios"
@@ -97,7 +99,7 @@ const NavbarPage = () => {
                                     <span className="ms-2">
                                         Perfumería
                                     </span>
-                                </NavDropdown.Item>
+                                </Link>
                             </NavDropdown>
                             <NavDropdown title="OFERTAS" id="navbarScrollingDropdown">
                                 <NavDropdown.Item href="#action1">
