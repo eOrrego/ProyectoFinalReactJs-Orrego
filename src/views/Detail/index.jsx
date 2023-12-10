@@ -7,9 +7,9 @@ const { data: { items } } = data;
 
 const PageProductDetail = () => {
 
-    const { itemId } = useParams();
+    const { productId } = useParams();
 
-    const product = items.find((item) => item.id === itemId);
+    const product = items.find((item) => item.id === productId);
 
     return (
         <>
