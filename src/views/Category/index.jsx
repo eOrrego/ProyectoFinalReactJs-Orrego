@@ -1,6 +1,5 @@
 import data from '../../data/products.json';
 import { useParams } from "react-router-dom";
-import NavbarPage from "../../components/Navbar/NavbarPage";
 
 const { data: { items } } = data;
 
@@ -12,7 +11,6 @@ const PageProductCategory = () => {
 
     return (
         <>
-            <NavbarPage />
             <div className="container">
                 <h2>
                     {categoryId.toUpperCase()}

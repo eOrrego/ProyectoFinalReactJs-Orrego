@@ -6,20 +6,28 @@ import Home from "../views/Home";
 import Error404 from "../views/Error";
 import PageProductDetail from "../views/Detail";
 import PageProductCategory from "../views/Category";
+import LayOutPublic from "../layout/LayOutPublic";
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Home />,
+        element: <LayOutPublic />,
         errorElement: <Error404 />,
-    },
-    {
-        path: "/category/:categoryId",
-        element: <PageProductCategory />,
-    },
-    {
-        path: "/item/:itemId",
-        element: <PageProductDetail />,
+        children: [
+            {
+                index: true,
+                path: "/",
+                element: <Home />,
+            },
+            {
+                path: "/category/:categoryId",
+                element: <PageProductCategory />,
+            },
+            {
+                path: "/product/:productId",
+                element: <PageProductDetail />,
+            },
+        ],
     },
 ]);
 
