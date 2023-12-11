@@ -1,23 +1,51 @@
+import { getProductById } from "../../data/asyncMock";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import data from '../../data/products.json';
 import ItemDetailContainer from "../../components/ItemDetailContainer";
-import { Link } from "react-router-dom";
-
-const { data: { items } } = data;
 
 const PageProductDetail = () => {
+    const [product, setProduct] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
 
     const { productId } = useParams();
 
-    const product = items.find((item) => item.id === productId);
+    useEffect(() => {
+        const asyncFuction = async () => {
+            try {
+                const result = await getProductById(productId);
+                setProduct(result);
+            } catch (error) {
+                setError(true);
+            } finally {
+                setLoading(false);
+            }
+        };
+        asyncFuction();
+    }, [productId]);
+
+    if (loading) {
+        return (
+            <div className="container">
+                <h2 className='text-center text-uppercase my-5'>Cargando...</h2>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="container">
+                <h2 className='text-center text-uppercase my-5'>Hubo un error</h2>
+            </div>
+        );
+    }
 
     return (
         <>
             <div className="container">
-                <h2>Detalle de producto</h2>
-                <button type="button" className="btn btn-success">
-                    <Link to="/" className="text-white">Volver</Link>
-                </button>
+                <h2
+                    className="text-center text-uppercase my-5"
+                >Detalle de producto</h2>
                 <ItemDetailContainer product={product} />
             </div>
         </>
