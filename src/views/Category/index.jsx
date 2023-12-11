@@ -42,7 +42,7 @@ const PageProductCategory = () => {
 
     return (
         <div className="container">
-            <h2 className="text-center text-uppercase my-5">{categoryId}</h2>
+            <h2 className="text-center text-uppercase my-5">Categoria {categoryId}</h2>
             <CardProduct products={products} />
         </div>
     )
