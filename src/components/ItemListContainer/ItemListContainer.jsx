@@ -1,17 +1,8 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
 import CardProduct from '../CardProduct/CardProduct';
-import data from '../../data/products.json';
+import { getProducts } from '../../data/asyncMock';
 
-const { data: { items } } = data;
-
-const getItems = () => {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(items);
-        }, 0);
-    });
-}
-// eslint-disable-next-line react/prop-types
 const ItemListContainer = ({ greeting }) => {
 
     const [products, setProducts] = useState([]);
@@ -19,19 +10,33 @@ const ItemListContainer = ({ greeting }) => {
     const [error, setError] = useState(false);
 
     useEffect(() => {
-        getItems().then((result) => {
-            setProducts(result);
-            setLoading(false);
-            setError(false);
-        });
+        const asyncFuction = async () => {
+            try {
+                const result = await getProducts();
+                setProducts(result);
+            } catch (error) {
+                setError(true);
+            } finally {
+                setLoading(false);
+            }
+        };
+        asyncFuction();
     }, []);
 
     if (loading) {
-        return <h3>Cargando...</h3>;
+        return (
+            <div className="container">
+                <h2 className='text-center text-uppercase my-5'>Cargando...</h2>
+            </div>
+        );
     }
 
     if (error) {
-        return <h3>Hubo un error</h3>;
+        return (
+            <div className="container">
+                <h2 className='text-center text-uppercase my-5'>Hubo un error</h2>
+            </div>
+        );
     }
 
     return (

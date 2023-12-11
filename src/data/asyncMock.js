@@ -128,11 +128,13 @@ const products = [
 ]
 
 // Simulamos una llamada a una API con una promesa que se resuelve en 500ms y nos devuelve el array de productos definido arriba
-export const getProducts = new Promise((resolve) => {
-    setTimeout(() => {
-        resolve(products)
-    }, 500)
-})
+export const getProducts = () => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(products)
+        }, 500)
+    })
+}
 
 // devuelve el array de productos filtrado por id
 export const getProductById = (id) => {
