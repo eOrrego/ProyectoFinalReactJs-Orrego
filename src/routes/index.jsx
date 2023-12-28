@@ -7,6 +7,8 @@ import Error404 from "../views/Error";
 import PageProductDetail from "../views/Detail";
 import PageProductCategory from "../views/Category";
 import LayOutPublic from "../layout/LayOutPublic";
+import Cart from "../views/Cart";
+import Checkout from "../views/Checkout";
 
 const router = createBrowserRouter([
     {
@@ -26,6 +28,14 @@ const router = createBrowserRouter([
             {
                 path: "/product/:productId",
                 element: <PageProductDetail />,
+            },
+            {
+                path: "/cart",
+                element: <Cart />,
+            },
+            {
+                path: "/checkout",
+                element: <Checkout />,
             },
         ],
     },
