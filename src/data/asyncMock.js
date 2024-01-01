@@ -4,7 +4,7 @@ const products = [
         "category": "jabon-ropa",
         "id": "1",
         "marca": "Ala",
-        "Stock": 10,
+        "stock": 10,
         "images": "https://clubdebeneficios.com/media/catalog/product/2/8/28.png",
         "price": 1000
     },
@@ -13,7 +13,7 @@ const products = [
         "category": "jabon-ropa",
         "id": "2",
         "marca": "Ala",
-        "Stock": 5,
+        "stock": 5,
         "images": "https://clubdebeneficios.com/media/catalog/product/2/6/26.png",
         "price": 2000
     },
@@ -22,7 +22,7 @@ const products = [
         "category": "jabon-ropa",
         "id": "3",
         "marca": "Skip",
-        "Stock": 15,
+        "stock": 15,
         "images": "https://clubdebeneficios.com/media/catalog/product/s/k/skip_cif.png",
         "price": 1100
     },
@@ -31,7 +31,7 @@ const products = [
         "category": "combos",
         "id": "4",
         "marca": "Skip",
-        "Stock": 15,
+        "stock": 15,
         "images": "https://clubdebeneficios.com/media/catalog/product/s/k/skip_collec.png",
         "price": 6768
     },
@@ -40,7 +40,7 @@ const products = [
         "category": "combos",
         "id": "5",
         "marca": "Dove",
-        "Stock": 15,
+        "stock": 15,
         "images": "https://clubdebeneficios.com/media/catalog/product/c/o/combo_familiar_mixto-01_3_.jpg",
         "price": 6878
     },
@@ -49,7 +49,7 @@ const products = [
         "category": "combos",
         "id": "6",
         "marca": "Coony",
-        "Stock": 15,
+        "stock": 15,
         "images": "https://clubdebeneficios.com/media/catalog/product/c/o/combo_coony_acne_1_.jpg",
         "price": 21615
     },
@@ -58,7 +58,7 @@ const products = [
         "category": "almacen",
         "id": "7",
         "marca": "Georgalos",
-        "Stock": 15,
+        "stock": 15,
         "images": "https://clubdebeneficios.com/media/catalog/product/h/e/hero_caja_premium.png",
         "price": 19460
     },
@@ -67,7 +67,7 @@ const products = [
         "category": "almacen",
         "id": "8",
         "marca": "HELLMANNS",
-        "Stock": 15,
+        "stock": 15,
         "images": "https://clubdebeneficios.com/media/catalog/product/c/o/combo_milanesass.png",
         "price": 2176
     },
@@ -76,7 +76,7 @@ const products = [
         "category": "almacen",
         "id": "9",
         "marca": "GALLO",
-        "Stock": 15,
+        "stock": 15,
         "images": "https://clubdebeneficios.com/media/catalog/product/7/7/7790070431721.jpg",
         "price": 6667
     },
@@ -85,7 +85,7 @@ const products = [
         "category": "bebidas",
         "id": "10",
         "marca": "Heineken",
-        "Stock": 15,
+        "stock": 15,
         "images": "https://clubdebeneficios.com/media/catalog/product/4/7/473baja.png",
         "price": 11406
     },
@@ -94,7 +94,7 @@ const products = [
         "category": "limpieza",
         "id": "11",
         "marca": "CIF",
-        "Stock": 15,
+        "stock": 15,
         "images": "https://clubdebeneficios.com/media/catalog/product/7/7/7791290788541.jpeg",
         "price": 2536
     },
@@ -103,7 +103,7 @@ const products = [
         "category": "limpieza",
         "id": "12",
         "marca": "CIF",
-        "Stock": 15,
+        "stock": 15,
         "images": "https://clubdebeneficios.com/media/catalog/product/9/1/918_combo_mega_recarga_cif.png",
         "price": 1798
     },
@@ -112,7 +112,7 @@ const products = [
         "category": "perfumeria",
         "id": "13",
         "marca": "Dove",
-        "Stock": 15,
+        "stock": 15,
         "images": "https://clubdebeneficios.com/media/catalog/product/s/h/shampo_ac_amazonia_1_2x-100_2_.jpg",
         "price": 2453
     },
@@ -121,7 +121,7 @@ const products = [
         "category": "perfumeria",
         "id": "14",
         "marca": "SEDAL",
-        "Stock": 15,
+        "stock": 15,
         "images": "https://clubdebeneficios.com/media/catalog/product/0/2/02_3_1_.png",
         "price": 2455
     }

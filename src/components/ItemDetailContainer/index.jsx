@@ -1,3 +1,5 @@
+import { useState } from "react"
+import ItemCount from "../ItemCount/ItemCount"
 
 const ItemDetailContainer = (
     {
@@ -6,10 +8,18 @@ const ItemDetailContainer = (
             category: "category",
             name: "name",
             price: "price",
-            images: "images"
+            images: "images",
+            stock: "stock",
         }
     }
 ) => {
+
+    const [quantityAdded, setQuantityAdded] = useState(0)
+
+    const handleOnAdd = (quantity) => {
+        setQuantityAdded(quantity)
+    }
+
     return (
         <>
             <div
@@ -49,6 +59,28 @@ const ItemDetailContainer = (
                         </div>
                     </div>
                 </div>
+                {
+                    quantityAdded === 0
+                        ?
+                        <ItemCount
+                            stock={product.stock}
+                            handleOnAdd={handleOnAdd}
+                        />
+                        :
+                        <div
+                            className="card-body"
+                        >
+                            <span
+                                className="card-text fw-bold text-uppercase text-muted m-2 d-block text-center bg-light p-2 rounded-pill mx-auto shadow-sm border border-1 border-secondary"
+                            >
+                                Cantidad
+                            </span>
+                            <span
+                                className="card-text fw-bold"
+                            >{quantityAdded}
+                            </span>
+                        </div>
+                }
             </div>
         </>
     )
