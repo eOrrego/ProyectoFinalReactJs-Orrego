@@ -1,15 +1,32 @@
 /* eslint-disable react/prop-types */
 import { createContext, useState } from 'react';
 
-const CartContext = createContext();
+const CartContext = createContext(
+    {
+        cartItems: [],
+    }
+);
 
 const CartProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState([]);
 
+    console.log(cartItems);
+
     // funcion para agregar un item al carrito
-    const addToCart = (item) => {
-        setCartItems([...cartItems, item]);
+    const addToCart = (item, quantity) => {
+        if (isInCart(item.id)) {
+            const updateCart = [...cartItems];
+            updateCart.forEach((element) => {
+                if (element.id === item.id) {
+                    element.quantity += quantity;
+                }
+            });
+            setCartItems(updateCart);
+        } else {
+            setCartItems([...cartItems, { ...item, quantity }]);
+        }
     };
+
 
     // funcion para remover un item del carrito
     const removeFromCart = (itemId) => {
@@ -26,6 +43,11 @@ const CartProvider = ({ children }) => {
         return cartItems.reduce((acc, item) => acc + item.price, 0);
     };
 
+    // funcion para saber si un item esta en el carrito
+    const isInCart = (id) => {
+        return cartItems.some((item) => item.id === id);
+    };
+
     // retornamos el provider del contexto
     return (
         <CartContext.Provider
@@ -35,6 +57,7 @@ const CartProvider = ({ children }) => {
                 removeFromCart,
                 clearCart,
                 getTotalPrice,
+                isInCart,
             }}
         >
             {children}
