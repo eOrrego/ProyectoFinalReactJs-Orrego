@@ -1,8 +1,13 @@
 import { BsCart3 } from 'react-icons/Bs';
 import Badge from 'react-bootstrap/Badge';
+import { useContext } from 'react';
+import { CartContext } from '../../context/CartContext';
 
 // eslint-disable-next-line react/prop-types
-const CartWidget = ({ items }) => {
+const CartWidget = () => {
+
+    const { cartItems } = useContext(CartContext);
+
     return (
         <>
             <i className='fs-2 ms-2 mb-2'>
@@ -10,7 +15,7 @@ const CartWidget = ({ items }) => {
             </i>
             <span>
                 <Badge pill bg="success">
-                    {items}
+                    {cartItems.length}
                 </Badge>
             </span>
         </>

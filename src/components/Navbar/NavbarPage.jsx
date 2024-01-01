@@ -127,7 +127,7 @@ const NavbarPage = () => {
                             </Button>
                         </Form>
                         <Profile name={"Esteban"} />
-                        <CartWidget items={7} />
+                        <CartWidget />
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
