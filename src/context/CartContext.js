@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import { createContext, useState } from 'react';
 
-const CartContext = React.createContext();
+const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState([]);
