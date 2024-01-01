@@ -1,5 +1,6 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import ItemCount from "../ItemCount/ItemCount"
+import { CartContext } from "../../context/CartContext"
 
 const ItemDetailContainer = (
     {
@@ -16,8 +17,19 @@ const ItemDetailContainer = (
 
     const [quantityAdded, setQuantityAdded] = useState(0)
 
+    const { addToCart } = useContext(CartContext);
+
     const handleOnAdd = (quantity) => {
         setQuantityAdded(quantity)
+
+        const item = {
+            id: product.id,
+            name: product.name,
+            price: product.price,
+        }
+
+        addToCart(item, quantity)
+
     }
 
     return (
