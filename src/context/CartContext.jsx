@@ -27,7 +27,6 @@ const CartProvider = ({ children }) => {
         }
     };
 
-
     // funcion para remover un item del carrito
     const removeFromCart = (itemId) => {
         setCartItems(cartItems.filter((item) => item.id !== itemId));
@@ -41,6 +40,11 @@ const CartProvider = ({ children }) => {
     // funcion para obtener el precio total del carrito
     const getTotalPrice = () => {
         return cartItems.reduce((acc, item) => acc + item.price, 0);
+    };
+
+    // funcion para devolver la cantidad de items en el carrito
+    const getQuantity = () => {
+        return cartItems.reduce((acc, item) => acc + item.quantity, 0);
     };
 
     // funcion para saber si un item esta en el carrito
@@ -57,6 +61,7 @@ const CartProvider = ({ children }) => {
                 removeFromCart,
                 clearCart,
                 getTotalPrice,
+                getQuantity,
                 isInCart,
             }}
         >
