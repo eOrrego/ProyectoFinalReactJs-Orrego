@@ -6,7 +6,7 @@ import { CartContext } from '../../context/CartContext';
 // eslint-disable-next-line react/prop-types
 const CartWidget = () => {
 
-    const { cartItems } = useContext(CartContext);
+    const { getQuantity } = useContext(CartContext);
 
     return (
         <>
@@ -15,7 +15,7 @@ const CartWidget = () => {
             </i>
             <span>
                 <Badge pill bg="success">
-                    {cartItems.length}
+                    {getQuantity()}
                 </Badge>
             </span>
         </>
