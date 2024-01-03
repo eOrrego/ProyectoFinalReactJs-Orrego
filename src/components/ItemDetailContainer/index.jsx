@@ -20,16 +20,15 @@ const ItemDetailContainer = (
     const { addToCart } = useContext(CartContext);
 
     const handleOnAdd = (quantity) => {
-        setQuantityAdded(quantity)
+        setQuantityAdded(quantity);
 
         const item = {
             id: product.id,
             name: product.name,
             price: product.price,
-        }
+        };
 
-        addToCart(item, quantity)
-
+        addToCart(item, quantity);
     }
 
     return (
