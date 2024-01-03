@@ -37,9 +37,9 @@ const CartProvider = ({ children }) => {
         setCartItems([]);
     };
 
-    // funcion para obtener el precio total del carrito
+    // funcion para obtener el precio total del carrito sabiendo el precio de cada item y su cantidad
     const getTotalPrice = () => {
-        return cartItems.reduce((acc, item) => acc + item.price, 0);
+        return cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
     };
 
     // funcion para devolver la cantidad de items en el carrito
