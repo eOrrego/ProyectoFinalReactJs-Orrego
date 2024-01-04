@@ -1,6 +1,7 @@
 import { useContext, useState } from "react"
 import ItemCount from "../ItemCount/ItemCount"
 import { CartContext } from "../../context/CartContext"
+import { Link } from "react-router-dom"
 
 const ItemDetailContainer = (
     {
@@ -81,15 +82,15 @@ const ItemDetailContainer = (
                         <div
                             className="card-body"
                         >
-                            <span
-                                className="card-text fw-bold text-uppercase text-muted m-2 d-block text-center bg-light p-2 rounded-pill mx-auto shadow-sm border border-1 border-secondary"
-                            >
-                                Cantidad
-                            </span>
-                            <span
-                                className="card-text fw-bold"
-                            >{quantityAdded}
-                            </span>
+
+                            <Link to="/cart">
+                                <button
+                                    className="btn btn-primary"
+                                >
+                                    Terminar mi compra
+                                </button>
+                            </Link>
+
                         </div>
                 }
             </div>
