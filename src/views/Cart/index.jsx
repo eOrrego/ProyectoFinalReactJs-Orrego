@@ -57,6 +57,8 @@ const Cart = () => {
                     </table>
                 </div>
             </div>
+            <hr />
+            <Link to="/checkout" className="btn btn-success">Finalizar compra</Link>
         </div>
 
     )
