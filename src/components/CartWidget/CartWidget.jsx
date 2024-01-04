@@ -10,14 +10,18 @@ const CartWidget = () => {
 
     return (
         <>
-            <i className='fs-2 ms-2 mb-2'>
-                <BsCart3 />
-            </i>
-            <span>
-                <Badge pill bg="success">
-                    {getQuantity()}
-                </Badge>
-            </span>
+            <div
+                className={getQuantity() > 0 ? 'd-block' : 'd-none'}
+            >
+                <i className='fs-2 ms-2 mb-2'>
+                    <BsCart3 />
+                </i>
+                <span>
+                    <Badge pill bg="success">
+                        {getQuantity()}
+                    </Badge>
+                </span>
+            </div>
         </>
     );
 };
