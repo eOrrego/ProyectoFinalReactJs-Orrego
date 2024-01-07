@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
 import { createContext, useContext, useEffect, useState } from "react";
-import { auth, signInWithGoogle, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "../services/firebase/config.js";
+import { auth } from "../services/firebase/config.js";
 
 // Crea el contexto de autenticación
 const AuthContext = createContext();
@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
     // Función para registrar un usuario con email y contraseña
     const signup = async (email, password) => {
         try {
-            const respuesta = await createUserWithEmailAndPassword(auth, email, password);
+            const respuesta = await auth.createUserWithEmailAndPassword(email, password);
             const user = respuesta.user;
             setCurrentUser(user);
         } catch (error) {
@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
     // Función para iniciar sesión con email y contraseña
     const login = async (email, password) => {
         try {
-            const respuesta = await signInWithEmailAndPassword(auth, email, password);
+            const respuesta = await auth.signInWithEmailAndPassword(auth, email, password);
             const user = respuesta.user;
             setCurrentUser(user);
         } catch (error) {
@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
     // Función para iniciar sesión con Google
     const loginWithGoogle = async () => {
         try {
-            const respuesta = await signInWithGoogle(auth);
+            const respuesta = await auth.signInWithGoogle(auth);
             const user = respuesta.user;
             setCurrentUser(user);
         } catch (error) {
@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }) => {
     // Función para cerrar sesión
     const logout = async () => {
         try {
-            await signOut(auth);
+            await auth.signOut(auth);
             setCurrentUser(null);
         } catch (error) {
             console.log("Error en el logout", error);
