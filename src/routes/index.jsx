@@ -9,6 +9,8 @@ import PageProductCategory from "../views/Category";
 import LayOutPublic from "../layout/LayOutPublic";
 import Cart from "../views/Cart";
 import Checkout from "../views/Checkout";
+import LoginPage from "../views/LoginPage";
+import RegisterPage from "../views/RegisterPage";
 
 const router = createBrowserRouter([
     {
@@ -37,6 +39,14 @@ const router = createBrowserRouter([
                 path: "/checkout",
                 element: <Checkout />,
             },
+            {
+                path: "/login",
+                element: <LoginPage />,
+            },
+            {
+                path: "/register",
+                element: <RegisterPage />,
+            }
         ],
     },
 ]);
