@@ -1,14 +1,27 @@
-/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useEffect, useState } from "react";
+import {
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged,
+    GoogleAuthProvider,
+    signInWithPopup,
+    sendPasswordResetEmail,
+} from "firebase/auth";
 import { auth } from "../services/firebase/config.js";
 
 // Crea el contexto de autenticación
 const AuthContext = createContext();
 
-// Hook para acceder al contexto de autenticación
+// Hook para acceder al contexto de autenticación desde cualquier componente
 export const useAuth = () => {
-    return useContext(AuthContext);
+    const context = useContext(AuthContext);
+    if (!context) {
+        throw new Error("useAuth debe estar dentro del proveedor AuthProvider");
+    }
+    return context;
 };
 
 // Proveedor de autenticación
@@ -17,55 +30,38 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     // Función para registrar un usuario con email y contraseña
-    const signup = async (email, password) => {
-        try {
-            const respuesta = await auth.createUserWithEmailAndPassword(email, password);
-            const user = respuesta.user;
-            setCurrentUser(user);
-        } catch (error) {
-            console.log("Error en el registro", error);
-        }
-    }
+    const signup = (email, password) => {
+        return createUserWithEmailAndPassword(auth, email, password);
+    };
 
     // Función para iniciar sesión con email y contraseña
-    const login = async (email, password) => {
-        try {
-            const respuesta = await auth.signInWithEmailAndPassword(auth, email, password);
-            const user = respuesta.user;
-            setCurrentUser(user);
-        } catch (error) {
-            console.log("Error en el login", error);
-        }
-    }
+    const login = (email, password) => {
+        return signInWithEmailAndPassword(auth, email, password);
+    };
 
     // Función para iniciar sesión con Google
-    const loginWithGoogle = async () => {
-        try {
-            const respuesta = await auth.signInWithGoogle(auth);
-            const user = respuesta.user;
-            setCurrentUser(user);
-        } catch (error) {
-            console.log("Error en el login con Google", error);
-        }
-    }
+    const loginWithGoogle = () => {
+        const provider = new GoogleAuthProvider();
+        return signInWithPopup(auth, provider);
+    };
 
     // Función para cerrar sesión
-    const logout = async () => {
-        try {
-            await auth.signOut(auth);
-            setCurrentUser(null);
-        } catch (error) {
-            console.log("Error en el logout", error);
-        }
-    }
+    const logout = () => {
+        return signOut(auth);
+    };
+
+    // Función para restablecer contraseña
+    const resetPassword = (email) => {
+        return sendPasswordResetEmail(auth, email);
+    };
 
     // Efecto para establecer el usuario actual
     useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged((user) => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
             setCurrentUser(user);
             setLoading(false);
         });
-        return unsubscribe;
+        return () => unsubscribe();
     }, []);
 
     // Objeto de contexto
@@ -75,8 +71,10 @@ export const AuthProvider = ({ children }) => {
         login,
         loginWithGoogle,
         logout,
+        resetPassword,
     };
 
+    // Renderiza el proveedor de contexto
     return (
         <AuthContext.Provider value={value}>
             {!loading && children}
