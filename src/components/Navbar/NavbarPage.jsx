@@ -3,8 +3,11 @@ import { Navbar, Container, Nav, NavDropdown, Form, Button } from 'react-bootstr
 import { BsSearch } from 'react-icons/Bs';
 import Profile from "../Profile/Profile";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context/FirebaseAuthContext";
 
 const NavbarPage = () => {
+    const { currentUser } = useAuth();
+
     return (
         <div>
             <Navbar expand="lg" className="bg-body-tertiary">
@@ -112,6 +115,18 @@ const NavbarPage = () => {
                                     Combos y Cajas
                                 </NavDropdown.Item>
                             </NavDropdown>
+
+                            {currentUser ? (
+                                <div className="nav-link text-uppercase text-black">
+                                    {currentUser.email}
+                                </div>
+                            )
+                                : (
+                                    <Link to="/login" className="nav-link text-uppercase">
+                                        Login
+                                    </Link>
+                                )}
+
                         </Nav>
                         <Form className="d-flex">
                             <Form.Control
