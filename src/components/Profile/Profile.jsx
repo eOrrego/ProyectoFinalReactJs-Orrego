@@ -1,7 +1,7 @@
 import { Button } from "react-bootstrap";
 import { BsPerson } from 'react-icons/Bs';
 
-const Profile = ({ name }) => {
+const Profile = () => {
     return (
         <>
             <Button variant="outline-dark" className="ms-5 me-2">

@@ -126,7 +126,7 @@ const NavbarPage = () => {
                                 </i>
                             </Button>
                         </Form>
-                        <Profile name={"Esteban"} />
+                        <Profile />
                         <CartWidget />
                     </Navbar.Collapse>
                 </Container>
