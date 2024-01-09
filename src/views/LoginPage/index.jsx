@@ -110,7 +110,7 @@ const LoginPage = () => {
                         </button>
                     </form>
                     <div className="text-center mt-3">
-                        <Link to="/">Crear una cuenta</Link>
+                        <Link to="/register">Crear una cuenta</Link>
                     </div>
                     <div className="text-center mt-3">
                         <button
