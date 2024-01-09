@@ -4,7 +4,6 @@ import { useAuth } from "../../context/FirebaseAuthContext";
 import { AlertMessage } from "../../components/AlertMessage/AlertMessage";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa6";
-import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 
 const LoginPage = () => {
     const navigate = useNavigate();
