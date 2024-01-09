@@ -17,7 +17,7 @@ const Profile = () => {
 
     return (
         <>
-            <Link to="/" className="navbar-brand mx-2">
+            <Link to="/profile" className="navbar-brand mx-2">
                 <Button variant="outline-success">
                     <BsPerson />
                 </Button>
