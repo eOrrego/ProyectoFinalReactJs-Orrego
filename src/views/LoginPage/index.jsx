@@ -5,7 +5,7 @@ import { AlertMessage } from "../../components/AlertMessage/AlertMessage";
 
 const LoginPage = () => {
     const navigate = useNavigate();
-    const { login, loginWithGoogle, resetPassword, currentUser } = useAuth();
+    const { login, loginWithGoogle, resetPassword, currentUser, loginWithFacebook } = useAuth();
     const [user, setUser] = useState({
         email: "",
         password: "",
@@ -34,6 +34,16 @@ const LoginPage = () => {
             await loginWithGoogle();
             navigate("/");
         } catch (error) {
+            setError(error.message);
+        }
+    };
+
+    const handleFacebookSignIn = async () => {
+        try {
+            await loginWithFacebook();
+            navigate("/");
+        }
+        catch (error) {
             setError(error.message);
         }
     };
@@ -108,6 +118,14 @@ const LoginPage = () => {
                             onClick={handleGoogleSignIn}
                         >
                             Iniciar sesión con Google
+                        </button>
+                    </div>
+                    <div className="text-center mt-3">
+                        <button
+                            className="btn btn-primary w-100"
+                            onClick={handleFacebookSignIn}
+                        >
+                            Iniciar sesión con Facebook
                         </button>
                     </div>
                     <div className="text-center mt-3">
