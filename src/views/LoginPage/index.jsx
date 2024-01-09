@@ -1,10 +1,15 @@
 import { useState } from 'react'
 import { useAuth } from '../../context/FirebaseAuthContext'
-
+import { Navigate } from 'react-router-dom';
 const LoginPage = () => {
-    const { login, loginWithGoogle } = useAuth();
+    const { login, loginWithGoogle, currentUser } = useAuth();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    if (currentUser) {
+        return <Navigate to="/" />
+    }
+
 
     const handleLogin = (e) => {
         e.preventDefault();
