@@ -4,6 +4,9 @@ import { useAuth } from "../../context/FirebaseAuthContext";
 import { AlertMessage } from "../../components/AlertMessage/AlertMessage";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa6";
+import { FaUnlock } from "react-icons/fa";
+import { FiUserPlus } from "react-icons/fi";
+
 
 const LoginPage = () => {
     const navigate = useNavigate();
@@ -112,7 +115,9 @@ const LoginPage = () => {
                         </button>
                     </form>
                     <div className="text-center mt-3">
-                        <Link to="/register">Crear una cuenta</Link>
+                        <Link to="/register" className="btn w-100">
+                            <FiUserPlus /> Crear una cuenta
+                        </Link>
                     </div>
                     <div className="text-center mt-3">
                         <button
@@ -132,10 +137,10 @@ const LoginPage = () => {
                     </div>
                     <div className="text-center mt-3">
                         <button
-                            className="btn link-primary"
+                            className="btn w-100"
                             onClick={handleResetPassword}
                         >
-                            Restablecer contraseña
+                            <FaUnlock /> Restablecer contraseña
                         </button>
                     </div>
                 </div>
