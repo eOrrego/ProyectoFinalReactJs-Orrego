@@ -66,7 +66,6 @@ const RegisterPage = () => {
                         </button>
                         <div className="d-flex justify-content-between mt-3">
                             <Link to="/login">Iniciar sesión</Link>
-                            <Link to="/reset-password">Olvidé mi contraseña</Link>
                         </div>
                     </form>
                     {error && <AlertMessage message={error} />}
