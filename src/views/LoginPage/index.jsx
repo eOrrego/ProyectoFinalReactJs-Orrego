@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/FirebaseAuthContext";
 import { AlertMessage } from "../../components/AlertMessage/AlertMessage";
+import { FcGoogle } from "react-icons/fc";
+import { FaFacebook } from "react-icons/fa6";
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 
 const LoginPage = () => {
     const navigate = useNavigate();
@@ -114,23 +117,23 @@ const LoginPage = () => {
                     </div>
                     <div className="text-center mt-3">
                         <button
-                            className="btn btn-danger w-100"
+                            className="btn w-100"
                             onClick={handleGoogleSignIn}
                         >
-                            Iniciar sesión con Google
+                            <FcGoogle /> Iniciar sesión con Google
                         </button>
                     </div>
                     <div className="text-center mt-3">
                         <button
-                            className="btn btn-primary w-100"
+                            className="btn w-100"
                             onClick={handleFacebookSignIn}
                         >
-                            Iniciar sesión con Facebook
+                            <FaFacebook /> Iniciar sesión con Facebook
                         </button>
                     </div>
                     <div className="text-center mt-3">
                         <button
-                            className="btn btn-warning w-100"
+                            className="btn link-primary"
                             onClick={handleResetPassword}
                         >
                             Restablecer contraseña
