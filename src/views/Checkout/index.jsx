@@ -7,6 +7,8 @@ import { addDoc, collection, documentId, getDocs, query, Timestamp, where, write
 const Checkout = () => {
     const [loading, setLoading] = useState(false);
     const [orderId, setOrderId] = useState("");
+    const [cartItemsCopy, setCartItemsCopy] = useState([]);
+    const [totalPrice, setTotalPrice] = useState(0);
 
     const { cartItems, getTotalPrice, clearCart } = useContext(CartContext);
 
@@ -55,6 +57,8 @@ const Checkout = () => {
                 await batch.commit();
                 const docRef = await addDoc(collection(db, "orders"), objOrder);
                 setOrderId(docRef.id);
+                setCartItemsCopy(cartItems);
+                setTotalPrice(getTotalPrice());
                 clearCart();
             } else {
                 console.log("Productos sin stock");
@@ -77,6 +81,16 @@ const Checkout = () => {
         return (
             <div>
                 <h1>Compra finalizada</h1>
+                {
+                    cartItemsCopy.map((item) => (
+                        <div key={item.id}>
+                            <p>Producto: {item.title}</p>
+                            <p>Cantidad: {item.quantity}</p>
+                            <p>Precio: ${item.price}</p>
+                        </div>
+                    ))
+                }
+                <p>Total: ${totalPrice}</p>
                 <p>Tu número de orden es {orderId}</p>
             </div>
         )
