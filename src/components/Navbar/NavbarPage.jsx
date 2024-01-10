@@ -123,7 +123,7 @@ const NavbarPage = () => {
                             )
                                 : (
                                     <Link to="/login" className="nav-link text-uppercase">
-                                        Login
+                                        Ingresar
                                     </Link>
                                 )}
 

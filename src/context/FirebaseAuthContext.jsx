@@ -9,6 +9,7 @@ import {
     GoogleAuthProvider,
     signInWithPopup,
     sendPasswordResetEmail,
+    FacebookAuthProvider,
 } from "firebase/auth";
 import { auth } from "../services/firebase/config.js";
 
@@ -45,6 +46,12 @@ export const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, provider);
     };
 
+    // Función para iniciar sesión con Facebook
+    const loginWithFacebook = () => {
+        const provider = new FacebookAuthProvider();
+        return signInWithPopup(auth, provider);
+    };
+
     // Función para cerrar sesión
     const logout = () => {
         return signOut(auth);
@@ -72,6 +79,7 @@ export const AuthProvider = ({ children }) => {
         loginWithGoogle,
         logout,
         resetPassword,
+        loginWithFacebook,
     };
 
     // Renderiza el proveedor de contexto
