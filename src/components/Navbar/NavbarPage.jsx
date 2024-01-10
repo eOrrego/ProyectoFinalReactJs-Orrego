@@ -104,18 +104,6 @@ const NavbarPage = () => {
                                     </span>
                                 </Link>
                             </NavDropdown>
-                            <NavDropdown title="OFERTAS" id="navbarScrollingDropdown">
-                                <NavDropdown.Item href="#action1">
-                                    Cyber Club
-                                </NavDropdown.Item>
-                                <NavDropdown.Item href="#action2">
-                                    Ofertas IMPERDIBLES
-                                </NavDropdown.Item>
-                                <NavDropdown.Item href="#action3">
-                                    Combos y Cajas
-                                </NavDropdown.Item>
-                            </NavDropdown>
-
                             {currentUser ? (
                                 <div className="nav-link text-uppercase text-black">
                                     {currentUser.email}
