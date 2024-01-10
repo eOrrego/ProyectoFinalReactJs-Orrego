@@ -1,16 +1,22 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/FirebaseAuthContext'
 import { AlertMessage } from '../../components/AlertMessage/AlertMessage'
 
 const RegisterPage = () => {
     const navigate = useNavigate();
-    const { signup } = useAuth();
+    const { signup, currentUser } = useAuth();
     const [user, setUser] = useState({
         email: "",
         password: "",
     });
     const [error, setError] = useState("");
+
+    useEffect(() => {
+        if (currentUser) {
+            navigate("/");
+        }
+    }, [currentUser, navigate]);
 
     const handleSumit = async (e) => {
         e.preventDefault();
