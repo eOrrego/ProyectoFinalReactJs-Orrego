@@ -52,6 +52,11 @@ const CartProvider = ({ children }) => {
         return cartItems.some((item) => item.id === id);
     };
 
+    //funcion para obtener un item del carrito
+    const getItem = (id) => {
+        return cartItems.find((item) => item.id === id);
+    };
+
     // retornamos el provider del contexto
     return (
         <CartContext.Provider
@@ -63,6 +68,7 @@ const CartProvider = ({ children }) => {
                 getTotalPrice,
                 getQuantity,
                 isInCart,
+                getItem,
             }}
         >
             {children}
