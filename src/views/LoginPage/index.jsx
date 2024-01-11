@@ -78,7 +78,7 @@ const LoginPage = () => {
         <div className="container">
             <div className="row justify-content-center">
                 <div className="col-md-5">
-                    <h1 className="text-center mb-4">Iniciar sesión</h1>
+                    <h1 className="text-center my-5">Iniciar sesión</h1>
                     {error && <AlertMessage message={error} />}
                     <form onSubmit={handleSumit}>
                         <div className="mb-3">
