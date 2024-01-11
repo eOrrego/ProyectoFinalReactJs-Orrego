@@ -1,28 +1,25 @@
+/* eslint-disable react/prop-types */
 import { useContext, useState } from "react"
 import ItemCount from "../ItemCount/ItemCount"
 import { CartContext } from "../../context/CartContext"
 import { Link } from "react-router-dom"
-import { useAuth } from "../../context/FirebaseAuthContext"
 
 const ItemDetailContainer = (
     {
-        // eslint-disable-next-line react/prop-types
         product = {
             category: "category",
             name: "name",
             price: "price",
             images: "images",
             stock: "stock",
-        }
+        },
+        currentUser,
     }
 ) => {
 
     const [quantityAdded, setQuantityAdded] = useState(0)
 
     const { addToCart, getItem } = useContext(CartContext);
-
-    // llamar a useAuth para obtener el usuario actual, puede agregar al carrito si está logueado
-    const { currentUser } = useAuth();
 
     const handleOnAdd = (quantity) => {
         setQuantityAdded(quantity);

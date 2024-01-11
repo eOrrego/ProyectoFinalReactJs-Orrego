@@ -3,12 +3,16 @@ import { useParams } from "react-router-dom";
 import ItemDetailContainer from "../../components/ItemDetailContainer";
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../../services/firebase/config.js';
+import { useAuth } from "../../context/FirebaseAuthContext.jsx";
 
 const PageProductDetail = () => {
     const [product, setProduct] = useState([]);
     const [loading, setLoading] = useState(true);
 
     const { productId } = useParams();
+
+    // aplicar logica para relacionar el carrito con el usuario logueado
+    const { currentUser } = useAuth();
 
     useEffect(() => {
         const getProductFirebase = async () => {
@@ -35,7 +39,10 @@ const PageProductDetail = () => {
                 <h2
                     className="text-center text-uppercase my-5"
                 >Detalle de producto</h2>
-                <ItemDetailContainer product={product} />
+                <ItemDetailContainer
+                    product={product}
+                    currentUser={currentUser}
+                />
             </div>
         </>
     )
