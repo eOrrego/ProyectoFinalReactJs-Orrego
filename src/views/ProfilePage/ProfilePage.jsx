@@ -28,33 +28,54 @@ const ProfilePage = () => {
 
     return (
         <div className="container">
-            <h1 className="text-center">Mis compras</h1>
+            <div className="row my-4">
+                <div className="col-12">
+                    <h2 className="text-center">Mis ordenes</h2>
+                    <hr />
+                </div>
+            </div>
             <div className="row">
-                {loading ? (
-                    <div className="d-flex justify-content-center">
-                        <div className="spinner-border text-primary" role="status">
-                            <span className="visually-hidden">cargando...</span>
-                        </div>
-                    </div>
-                ) : (
-                    orders.map((order) => (
-                        <div className="col-12 col-md-6 col-lg-4 mb-4" key={order.id}>
-                            <div className="card">
-                                <div className="card-body">
-                                    <h5 className="card-title">Compra N° {order.id}</h5>
-                                    <p className="card-text">Total: ${order.total}</p>
-                                    <p className="card-text">Fecha: {order.date.toDate().toLocaleDateString()}</p>
-                                    <Link to={`/order/${order.id}`} className="btn btn-primary">
-                                        Ver detalle
-                                    </Link>
-                                </div>
+                <div className="col-12">
+                    {loading ? (
+                        <div className="text-center">
+                            <div className="
+                            spinner-border 
+                            text-secondary
+                            " role="status">
+                                <span className="visually-hidden">Cargando...</span>
                             </div>
                         </div>
-                    ))
-                )}
+                    ) : (
+                        <div className="row row-cols-1 row-cols-md-3 g-4">
+                            {orders.map((order) => (
+                                <div key={order.id} className="col">
+                                    <div className="
+                                    card 
+                                    h-100
+                                    bg-light
+                                    border
+                                    border-1
+                                    shadow-lg
+                                    rounded
+                                    ">
+                                        <div className="
+                                            card-body
+                                        ">
+                                            <h5 className="card-title">Orden: {order.id}</h5>
+                                            <p className="card-text">Estado: {order.status}</p>
+                                            <p className="card-text">Total: ${order.total}</p>
+                                            <Link to={`/order/${order.id}`} className="btn btn-outline-success">Ver detalle</Link>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </div>
             </div>
-        </div>
+        </div >
     );
+
 };
 
 export default ProfilePage;
