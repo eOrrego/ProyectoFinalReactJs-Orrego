@@ -26,6 +26,40 @@ const ProfilePage = () => {
         }
     }, [currentUser]);
 
+    if (orders.length === 0) {
+        return (
+            <>
+                {loading ? (
+                    <div className="text-center">
+                        <div className="
+                    spinner-border 
+                    text-secondary
+                    " role="status">
+                            <span className="visually-hidden">Cargando...</span>
+                        </div>
+                    </div>
+                ) : (
+                    <div className="container">
+                        <div className="row my-4">
+                            <div className="col-12">
+                                <h2 className="text-center">Mis ordenes</h2>
+                                <hr />
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-12">
+                                <div className="alert alert-info" role="alert">
+                                    No tienes ordenes realizadas
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )
+                }
+            </>
+        );
+    }
+
     return (
         <div className="container">
             <div className="row my-4">
