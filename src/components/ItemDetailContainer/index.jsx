@@ -43,6 +43,8 @@ const ItemDetailContainer = (
                 mb-5
                 bg-white
                 rounded
+                col-sm-8
+                mx-auto
                 ">
                 <div
                     className="
@@ -73,6 +75,7 @@ const ItemDetailContainer = (
                             className="
                             card-img-top
                             my-4
+                            px-2
                             "
                             style={{
                                 height: "400px",
