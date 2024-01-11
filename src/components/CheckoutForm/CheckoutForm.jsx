@@ -38,7 +38,11 @@ const CheckoutForm = ({ onConfirm }) => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
             />
-            <button type="submit">Confirmar</button>
+            {
+                name && phone && email
+                    ? <button type="submit">Confirmar</button>
+                    : <button type="submit" disabled>Confirmar</button>
+            }
         </form>
     );
 }
