@@ -18,7 +18,7 @@ const ItemDetailContainer = (
 
     const [quantityAdded, setQuantityAdded] = useState(0)
 
-    const { addToCart } = useContext(CartContext);
+    const { addToCart, getItem } = useContext(CartContext);
 
     const handleOnAdd = (quantity) => {
         setQuantityAdded(quantity);
@@ -77,6 +77,7 @@ const ItemDetailContainer = (
                         <ItemCount
                             stock={product.stock}
                             handleOnAdd={handleOnAdd}
+                            itemInCart={getItem(product.id)}
                         />
                         :
                         <div
