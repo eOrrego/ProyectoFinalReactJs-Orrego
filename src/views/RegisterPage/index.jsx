@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/FirebaseAuthContext'
 import { AlertMessage } from '../../components/AlertMessage/AlertMessage'
+import { FiUserPlus } from 'react-icons/fi'
 
 const RegisterPage = () => {
     const navigate = useNavigate();
@@ -37,7 +38,7 @@ const RegisterPage = () => {
 
     return (
         <div className="container">
-            <div className="row justify-content-center">
+            <div className="row justify-content-center my-5">
                 <div className="col-12 col-md-6 col-lg-4">
                     <h1>Registrarse</h1>
                     <form onSubmit={handleSumit}>
@@ -70,8 +71,10 @@ const RegisterPage = () => {
                         <button type="submit" className="btn btn-primary w-100">
                             Registrarse
                         </button>
-                        <div className="d-flex justify-content-between mt-3">
-                            <Link to="/login">Iniciar sesión</Link>
+                        <div className="text-center mt-4">
+                            <Link to="/login" className="btn w-100">
+                                <FiUserPlus /> Iniciar sesión
+                            </Link>
                         </div>
                     </form>
                     {error && <AlertMessage message={error} />}
