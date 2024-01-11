@@ -1,11 +1,14 @@
 /* eslint-disable react/prop-types */
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import CardProduct from '../CardProduct/CardProduct';
-import { getDocs, collection } from 'firebase/firestore';
+import { getDocs, collection, query, where } from 'firebase/firestore';
 import { db } from '../../services/firebase/config.js';
+import { CartContext } from '../../context/CartContext';
+import { useAuth } from '../../context/FirebaseAuthContext';
 
 const ItemListContainer = ({ greeting }) => {
-
+    const { currentUser } = useAuth();
+    const { setCartItems } = useContext(CartContext);
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -19,6 +22,20 @@ const ItemListContainer = ({ greeting }) => {
         };
         getProductsFirebase();
     }, []);
+
+    useEffect(() => {
+        const getCartItemsFirebase = async () => {
+            if (currentUser) {
+                const cartItemsCollection = collection(db, 'cartPending');
+                const cartItemsQuery = query(cartItemsCollection, where('userId', '==', currentUser.uid));
+                const cartItemsSnapshot = await getDocs(cartItemsQuery);
+                const cartItemsList = cartItemsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                const cartItems = cartItemsList[0]?.cartItems || [];
+                setCartItems(cartItems);
+            }
+        };
+        getCartItemsFirebase();
+    }, [currentUser, setCartItems]);
 
     if (loading) {
         return (
