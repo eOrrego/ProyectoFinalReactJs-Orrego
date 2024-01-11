@@ -4,9 +4,12 @@ import { BsSearch } from 'react-icons/Bs';
 import Profile from "../Profile/Profile";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/FirebaseAuthContext";
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 
 const NavbarPage = () => {
-    const { currentUser } = useAuth();
+    const { getQuantity, clearCart } = useContext(CartContext);
+    const { currentUser, logout } = useAuth();
 
     return (
         <div>
@@ -129,8 +132,14 @@ const NavbarPage = () => {
                                 </i>
                             </Button>
                         </Form>
-                        <Profile />
-                        <CartWidget />
+                        <Profile
+                            clearCart={clearCart}
+                            currentUser={currentUser}
+                            logout={logout}
+                        />
+                        <CartWidget
+                            getQuantity={getQuantity}
+                        />
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
