@@ -28,6 +28,7 @@ const ItemDetailContainer = (
             id: product.id,
             name: product.name,
             price: product.price,
+            images: product.images,
         };
 
         addToCart(item, quantity);
