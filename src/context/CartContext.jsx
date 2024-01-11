@@ -10,8 +10,6 @@ const CartContext = createContext(
 const CartProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState([]);
 
-    console.log(cartItems);
-
     // funcion para agregar un item al carrito
     const addToCart = (item, quantity) => {
         if (isInCart(item.id)) {
