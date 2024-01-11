@@ -3,6 +3,7 @@ import CheckoutForm from "../../components/CheckoutForm/CheckoutForm"
 import { CartContext } from "../../context/CartContext";
 import { db } from "../../services/firebase/config.js";
 import { addDoc, collection, documentId, getDocs, query, Timestamp, where, writeBatch } from "@firebase/firestore";
+import { useAuth } from "../../context/FirebaseAuthContext.jsx";
 
 const Checkout = () => {
     const [loading, setLoading] = useState(false);
@@ -11,6 +12,9 @@ const Checkout = () => {
     const [totalPrice, setTotalPrice] = useState(0);
 
     const { cartItems, getTotalPrice, clearCart } = useContext(CartContext);
+
+    // aplicar logica de autenticacion con AuthContext
+    const { currentUser } = useAuth();
 
     const createOrder = async ({ name, phone, email }) => {
         setLoading(true);
@@ -25,6 +29,7 @@ const Checkout = () => {
                 items: cartItems,
                 total: getTotalPrice(),
                 date: Timestamp.fromDate(new Date()),
+                userId: currentUser.uid,
             };
 
             const batch = writeBatch(db);
