@@ -4,6 +4,7 @@ import { CartContext } from "../../context/CartContext";
 import { db } from "../../services/firebase/config.js";
 import { addDoc, collection, documentId, getDocs, query, Timestamp, where, writeBatch } from "@firebase/firestore";
 import { useAuth } from "../../context/FirebaseAuthContext.jsx";
+import { Link } from "react-router-dom";
 
 const Checkout = () => {
     const [loading, setLoading] = useState(false);
@@ -89,7 +90,7 @@ const Checkout = () => {
                 {
                     cartItemsCopy.map((item) => (
                         <div key={item.id}>
-                            <p>Producto: {item.title}</p>
+                            <p>Producto: {item.name}</p>
                             <p>Cantidad: {item.quantity}</p>
                             <p>Precio: ${item.price}</p>
                         </div>
@@ -97,6 +98,11 @@ const Checkout = () => {
                 }
                 <p>Total: ${totalPrice}</p>
                 <p>Tu número de orden es {orderId}</p>
+                <p>Gracias por tu compra!</p>
+                <Link to="/">
+                    <button className="btn btn-outline-primary"
+                    >Volver al inicio</button>
+                </Link>
             </div>
         )
     }
