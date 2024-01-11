@@ -26,7 +26,7 @@ const LayOutPublic = () => {
         getCartItemsFirebase();
     }, [currentUser, setCartItems]);
 
-    // borrar el documento del carrito pendiente del usuario logueado en firebase
+    // borrar el documento del carrito pendiente del usuario logueado en firebase para que no quede guardado en la base de datos
     useEffect(() => {
         const deleteCartPendingFirebase = async () => {
             if (currentUser) {
