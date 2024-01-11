@@ -30,27 +30,53 @@ const ItemCount = ({ stock, handleOnAdd, itemInCart }) => {
 
     return (
         <div
-            className="d-flex justify-content-center align-items-center my-3"
-        >
+            className="
+            d-flex 
+            justify-content-center 
+            align-items-center 
+            my-3
+            ">
             {
                 stock == itemInCart?.quantity
-                    ? <span className="badge bg-danger">No hay stock</span>
-                    : <div className="d-flex justify-content-center align-items-center">
+                    ? <span className="
+                    badge 
+                    bg-danger
+                    ">No hay stock</span>
+                    : <div className="
+                    d-flex 
+                    justify-content-center 
+                    align-items-center
+                    ">
                         <button
-                            className="btn btn-outline-secondary btn-sm"
+                            className="btn 
+                            btn-outline-secondary 
+                            mx-2
+                            "
                             onClick={handleDecrement}
                         >
                             -
                         </button>
-                        <span className="mx-2">{count}</span>
+                        <span className="
+                        mx-2
+                        font-weight-bold
+                        text-uppercase
+                        ">{count}</span>
                         <button
-                            className="btn btn-outline-secondary btn-sm"
+                            className="
+                            btn 
+                            btn-outline-secondary 
+                            mx-2
+                            "
                             onClick={handleIncrement}
                         >
                             +
                         </button>
                         <button
-                            className="btn btn-outline-secondary btn-sm mx-2"
+                            className="
+                            btn 
+                            btn-outline-secondary 
+                            mx-2
+                            "
                             onClick={handleAddToCart}
                         >
                             Agregar al carrito
