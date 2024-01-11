@@ -1,17 +1,16 @@
+/* eslint-disable react/prop-types */
 import { Button } from "react-bootstrap";
 import { BsPerson } from 'react-icons/Bs';
-import { useAuth } from "../../context/FirebaseAuthContext";
 import { Navigate, Link } from "react-router-dom";
 
-const Profile = () => {
-
-    const { currentUser, logout } = useAuth();
+const Profile = ({ clearCart, currentUser, logout }) => {
 
     if (!currentUser) {
         return <Navigate to="/login" />
     }
 
     const handleLogout = () => {
+        clearCart();
         logout();
     }
 
