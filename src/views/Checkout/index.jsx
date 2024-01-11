@@ -14,7 +14,6 @@ const Checkout = () => {
 
     const { cartItems, getTotalPrice, clearCart } = useContext(CartContext);
 
-    // aplicar logica de autenticacion con AuthContext
     const { currentUser } = useAuth();
 
     const createOrder = async ({ name, phone, email }) => {
@@ -107,7 +106,6 @@ const Checkout = () => {
         )
     }
 
-    // utilicemos bootstrap para renderizar de una manera mas amigable el formulario
     return (
         <div
             className="container-fluid"
