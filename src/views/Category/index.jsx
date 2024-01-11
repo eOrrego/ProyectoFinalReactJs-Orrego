@@ -1,32 +1,14 @@
-// import { getProductsByCategory } from "../../data/asyncMock";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CardProduct from "../../components/CardProduct/CardProduct";
-
-//reemplazar asyncMock por firebase
 import { getDocs, collection, query, where } from 'firebase/firestore';
 import { db } from '../../services/firebase/config.js';
 
 const PageProductCategory = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
-    // const [error, setError] = useState(false);
 
     const { categoryId } = useParams();
-
-    // useEffect(() => {
-    //     const asyncFuction = async () => {
-    //         try {
-    //             const result = await getProductsByCategory(categoryId);
-    //             setProducts(result);
-    //         } catch (error) {
-    //             setError(true);
-    //         } finally {
-    //             setLoading(false);
-    //         }
-    //     };
-    //     asyncFuction();
-    // }, [categoryId]);
 
     useEffect(() => {
         const getProductsFirebase = async () => {
@@ -47,14 +29,6 @@ const PageProductCategory = () => {
             </div>
         );
     }
-
-    // if (error) {
-    //     return (
-    //         <div className="container">
-    //             <h2 className='text-center text-uppercase my-5'>Hubo un error</h2>
-    //         </div>
-    //     );
-    // }
 
     return (
         <div className="container">
