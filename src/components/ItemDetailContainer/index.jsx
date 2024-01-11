@@ -2,6 +2,7 @@ import { useContext, useState } from "react"
 import ItemCount from "../ItemCount/ItemCount"
 import { CartContext } from "../../context/CartContext"
 import { Link } from "react-router-dom"
+import { useAuth } from "../../context/FirebaseAuthContext"
 
 const ItemDetailContainer = (
     {
@@ -19,6 +20,9 @@ const ItemDetailContainer = (
     const [quantityAdded, setQuantityAdded] = useState(0)
 
     const { addToCart, getItem } = useContext(CartContext);
+
+    // llamar a useAuth para obtener el usuario actual, puede agregar al carrito si está logueado
+    const { currentUser } = useAuth();
 
     const handleOnAdd = (quantity) => {
         setQuantityAdded(quantity);
@@ -72,7 +76,7 @@ const ItemDetailContainer = (
                     </div>
                 </div>
                 {
-                    quantityAdded === 0
+                    quantityAdded === 0 && currentUser
                         ?
                         <ItemCount
                             stock={product.stock}
@@ -83,15 +87,37 @@ const ItemDetailContainer = (
                         <div
                             className="card-body"
                         >
-
-                            <Link to="/cart">
-                                <button
-                                    className="btn btn-primary"
-                                >
-                                    Terminar mi compra
-                                </button>
-                            </Link>
-
+                            {
+                                !currentUser
+                                    ?
+                                    <Link
+                                        to="/login"
+                                        className="btn btn-outline-primary w-50 btn-sm"
+                                    >
+                                        Iniciar sesión para comprar
+                                    </Link>
+                                    :
+                                    <div className="
+                                        d-flex
+                                        flex-column
+                                        justify-content-center
+                                        align-items-center
+                                        gap-2
+                                    ">
+                                        <Link
+                                            to="/cart"
+                                            className="btn btn-outline-success w-50 btn-sm"
+                                        >
+                                            Ir al carrito
+                                        </Link>
+                                        <Link
+                                            to="/"
+                                            className="btn btn-outline-primary w-50 btn-sm"
+                                        >
+                                            Volver al inicio
+                                        </Link>
+                                    </div>
+                            }
                         </div>
                 }
             </div>
