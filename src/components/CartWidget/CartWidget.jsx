@@ -1,13 +1,9 @@
 import { BsCart3 } from 'react-icons/Bs';
 import Badge from 'react-bootstrap/Badge';
-import { useContext } from 'react';
-import { CartContext } from '../../context/CartContext';
 import { Link } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
-const CartWidget = () => {
-
-    const { getQuantity } = useContext(CartContext);
+const CartWidget = ({ getQuantity }) => {
 
     return (
         <>
