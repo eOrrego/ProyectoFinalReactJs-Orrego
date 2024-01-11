@@ -22,6 +22,7 @@ const CheckoutForm = ({ onConfirm }) => {
         };
 
         onConfirm(userData);
+
     };
     return (
         <div
