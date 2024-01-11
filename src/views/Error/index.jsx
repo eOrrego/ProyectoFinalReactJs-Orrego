@@ -1,18 +1,22 @@
 import { useRouteError } from "react-router-dom"
+import NavbarPage from "../../components/Navbar/NavbarPage";
+import Footer from "../../components/Footer";
 
 const Error404 = () => {
 
     const error = useRouteError();
 
     return (
-        <div>
+        <>
+            <NavbarPage />
             <h1>
                 {error.status} - Ops!
             </h1>
             <p>
                 {error.data}
             </p>
-        </div>
+            <Footer />
+        </>
     )
 }
 
