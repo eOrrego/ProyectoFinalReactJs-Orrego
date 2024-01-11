@@ -36,39 +36,102 @@ const ItemDetailContainer = (
     return (
         <>
             <div
-                className="card mb-3 w-75 mx-auto mt-2 mb-3 shadow-sm border border-1 border-secondary rounded-3 text-truncate text-break text-wrap text-center text-nowrap"
-            >
+                className="
+                card
+                border-0
+                shadow
+                mb-5
+                bg-white
+                rounded
+                ">
                 <div
-                    className="row g-0"
-                >
+                    className="
+                    card
+                    border-2
+                    border-dark
+                    ">
                     <div
-                        className="col-md-4"
-                    >
+                        className="
+                        position-relative
+                        ">
                         <span
-                            className="card-text text-uppercase fw-bold text-muted m-2 d-block text-center bg-light p-2 rounded-pill mx-auto shadow-sm border border-1 border-secondary"
-                        >{product.category}</span>
+                            className="
+                            ms-2
+                            mt-2
+                            position-absolute
+                            top-0
+                            start-0
+                            px-2
+                            py-1
+                            bg-dark
+                            text-white
+                            text-uppercase
+                            font-weight-bold
+                            rounded
+                            ">{product.category}</span>
                         <img src={product.images}
-                            className="img-fluid rounded-start"
+                            className="
+                            card-img-top
+                            my-4
+                            "
+                            style={{
+                                height: "400px",
+                                objectFit: "cover",
+                            }}
                             alt={product.name} />
                     </div>
                     <div
-                        className="col-md-8"
-                    >
+                        className="
+                        card-body
+                        ">
                         <div
-                            className="card-body"
-                        >
+                            className="
+                            d-flex
+                            flex-column
+                            justify-content-center
+                            align-items-center
+                            gap-2
+                            ">
                             <h5
-                                className="card-title"
-                            >{product.name}</h5>
+                                className="
+                                text-uppercase
+                                font-weight-bold
+                                ">{product.name}</h5>
                             <span
-                                className="card-text fw-bold text-uppercase text-muted m-2 d-block text-center bg-light p-2 rounded-pill mx-auto shadow-sm border border-1 border-secondary"
+                                className="
+                                font-weight-bold
+                                text-uppercase
+                                "
+                                style={{
+                                    fontSize: "1.2rem",
+                                    fontWeight: "bold",
+                                }}
                             >
                                 Precio
                             </span>
-                            <span
-                                className="card-text fw-bold"
-                            >$ {product.price}
-                            </span>
+                            <div className="
+                            d-flex
+                            flex-column
+                            justify-content-center
+                            align-items-center
+                            gap-2
+                            border-top
+                            border-bottom
+                            py-2
+                            w-100
+                            bg-light
+                            ">
+                                <span
+                                    className="
+                                font-weight-bold
+                                "
+                                    style={{
+                                        fontSize: "1.2rem",
+                                        fontWeight: "bold",
+                                    }}
+                                >$ {product.price}
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
