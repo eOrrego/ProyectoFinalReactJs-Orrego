@@ -38,6 +38,7 @@ const Checkout = () => {
                 total: getTotalPrice(),
                 date: Timestamp.fromDate(new Date()),
                 userId: currentUser.uid,
+                status: "GENERADA"
             };
 
             const batch = writeBatch(db);
