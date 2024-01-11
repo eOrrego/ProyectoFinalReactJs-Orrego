@@ -107,10 +107,16 @@ const Checkout = () => {
         )
     }
 
+    // utilicemos bootstrap para renderizar de una manera mas amigable el formulario
     return (
-        <div>
-            <h1>Checkout</h1>
-            <CheckoutForm onConfirm={createOrder} />
+        <div
+            className="container-fluid"
+        >
+            <div
+                className="row justify-content-center my-5"
+            >
+                <CheckoutForm createOrder={createOrder} />
+            </div>
         </div>
     )
 }
