@@ -10,8 +10,6 @@ const PageProductDetail = () => {
     const [loading, setLoading] = useState(true);
 
     const { productId } = useParams();
-
-    // aplicar logica para relacionar el carrito con el usuario logueado
     const { currentUser } = useAuth();
 
     useEffect(() => {
