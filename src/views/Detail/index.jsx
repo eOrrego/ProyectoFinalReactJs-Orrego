@@ -33,15 +33,20 @@ const PageProductDetail = () => {
 
     return (
         <>
-            <div className="container">
+            <div className="
+            container
+            ">
                 <h2
-                    className="text-center text-uppercase my-5"
-                >Detalle de producto</h2>
+                    className="
+                    text-center 
+                    text-uppercase 
+                    my-5
+                    ">Detalle de producto</h2>
                 <ItemDetailContainer
                     product={product}
                     currentUser={currentUser}
                 />
-            </div>
+            </div >
         </>
     )
 }
