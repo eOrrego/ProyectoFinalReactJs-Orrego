@@ -30,22 +30,53 @@ const OrderPage = () => {
 
     return (
         <div className="container">
-            <h2 className="text-center text-uppercase my-5">Detalle de compra</h2>
-            <div className="card">
-                <div className="card-body">
-                    <h5 className="card-title">Compra N° {order.id}</h5>
-                    <p className="card-text">Total: ${order.total}</p>
-                    <p className="card-text">Fecha: {order.date.toDate().toLocaleDateString()}</p>
-                    <p className="card-text">Nombre: {order.buyer.name}</p>
-                    <p className="card-text">Email: {order.buyer.email}</p>
-                    <p className="card-text">Teléfono: {order.buyer.phone}</p>
-                    <p className="card-text">Productos:</p>
+            <h2 className="text-center text-uppercase my-5">Orden N° {order.id}</h2>
+            <div className="row">
+                <div className="col-12 col-md-6">
+                    <h4 className="text-center text-uppercase">Datos del comprador</h4>
                     <ul className="list-group">
-                        {order.items.map((item) => (
-                            <li className="list-group-item" key={item.id}>
-                                {item.name} - ${item.price} - Cantidad: {item.quantity} - Subtotal: ${item.price * item.quantity}
-                            </li>
-                        ))}
+                        <li className="list-group-item">Nombre: {order.buyer.cardholderName}</li>
+                        <li className="list-group-item">Teléfono: {order.buyer.phone}</li>
+                    </ul>
+                </div>
+                <div className="col-12 col-md-6">
+                    <h4 className="text-center text-uppercase">Datos de la compra</h4>
+                    <ul className="list-group">
+                        <li className="list-group-item">Fecha: {order.date.toDate().toLocaleDateString()}</li>
+                        <li className="list-group-item">Total: ${order.total}</li>
+                    </ul>
+                </div>
+            </div>
+            <div className="row mt-5">
+                <div className="col-12">
+                    <h4 className="text-center text-uppercase">Productos comprados</h4>
+                    <table className="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Producto</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Precio unitario</th>
+                                <th scope="col">Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {order.items.map((item) => (
+                                <tr key={item.id}>
+                                    <td>{item.title}</td>
+                                    <td>{item.quantity}</td>
+                                    <td>${item.price}</td>
+                                    <td>${item.price * item.quantity}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div className="row mt-5">
+                <div className="col-12">
+                    <h4 className="text-center text-uppercase">Estado de la orden</h4>
+                    <ul className="list-group">
+                        <li className="list-group-item">Estado: {order.status}</li>
                     </ul>
                 </div>
             </div>
