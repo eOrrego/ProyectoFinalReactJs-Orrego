@@ -108,12 +108,28 @@ const NavbarPage = () => {
                                 </Link>
                             </NavDropdown>
                             {currentUser ? (
-                                <div className="nav-link text-uppercase text-black">
+                                <div className="
+                                border
+                                border-2
+                                border-success
+                                rounded-pill
+                                text-center
+                                text-success
+                                fw-bold
+                                px-2
+                                py-1
+                                ms-3
+                                ">
                                     {currentUser.email}
                                 </div>
                             )
                                 : (
-                                    <Link to="/login" className="nav-link text-uppercase">
+                                    <Link to="/login" className="
+                                    btn btn-outline-success
+                                    btn-block
+                                    text-uppercase
+                                    ms-3
+                                    ">
                                         Ingresar
                                     </Link>
                                 )}
