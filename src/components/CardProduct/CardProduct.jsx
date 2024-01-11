@@ -42,6 +42,7 @@ const CardProduct = ({ products }) => {
                                 card-img-top
                                 border-bottom
                                 border-secondary
+                                px-2
                                 "
                                 alt={product.name}
                                 style={{
