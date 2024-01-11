@@ -29,11 +29,34 @@ const ItemCount = ({ stock, handleOnAdd, itemInCart }) => {
     };
 
     return (
-        <div>
-            <button onClick={handleDecrement}>-</button>
-            <span>{count}</span>
-            <button onClick={handleIncrement}>+</button>
-            <button onClick={handleAddToCart}>Añadir al carrito</button>
+        <div
+            className="d-flex justify-content-center align-items-center my-3"
+        >
+            {
+                stock == itemInCart?.quantity
+                    ? <span className="badge bg-danger">No hay stock</span>
+                    : <div className="d-flex justify-content-center align-items-center">
+                        <button
+                            className="btn btn-outline-secondary btn-sm"
+                            onClick={handleDecrement}
+                        >
+                            -
+                        </button>
+                        <span className="mx-2">{count}</span>
+                        <button
+                            className="btn btn-outline-secondary btn-sm"
+                            onClick={handleIncrement}
+                        >
+                            +
+                        </button>
+                        <button
+                            className="btn btn-outline-secondary btn-sm mx-2"
+                            onClick={handleAddToCart}
+                        >
+                            Agregar al carrito
+                        </button>
+                    </div>
+            }
         </div>
     );
 };
