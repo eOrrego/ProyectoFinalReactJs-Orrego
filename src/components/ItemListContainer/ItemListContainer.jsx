@@ -1,9 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
 import CardProduct from '../CardProduct/CardProduct';
-// import { getProducts } from '../../data/asyncMock';
-
-//reemplazar asyncMock por firebase
 import { getDocs, collection } from 'firebase/firestore';
 import { db } from '../../services/firebase/config.js';
 
@@ -11,21 +8,6 @@ const ItemListContainer = ({ greeting }) => {
 
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
-    // const [error, setError] = useState(false);
-
-    // useEffect(() => {
-    //     const asyncFuction = async () => {
-    //         try {
-    //             const result = await getProducts();
-    //             setProducts(result);
-    //         } catch (error) {
-    //             setError(true);
-    //         } finally {
-    //             setLoading(false);
-    //         }
-    //     };
-    //     asyncFuction();
-    // }, []);
 
     useEffect(() => {
         const getProductsFirebase = async () => {
@@ -45,14 +27,6 @@ const ItemListContainer = ({ greeting }) => {
             </div>
         );
     }
-
-    // if (error) {
-    //     return (
-    //         <div className="container">
-    //             <h2 className='text-center text-uppercase my-5'>Hubo un error</h2>
-    //         </div>
-    //     );
-    // }
 
     return (
         <div className="container">
