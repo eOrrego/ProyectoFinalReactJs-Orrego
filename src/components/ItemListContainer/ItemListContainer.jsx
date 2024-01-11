@@ -29,7 +29,13 @@ const ItemListContainer = ({ greeting }) => {
 
     return (
         <div className="container">
-            <h1 className='text-center my-5'>{greeting}</h1>
+            <h1 className='
+            text-center 
+            my-5
+            text-black
+            font-weight-bold
+            text-uppercase
+            '>{greeting}</h1>
             <CardProduct products={products} />
         </div>
     );
