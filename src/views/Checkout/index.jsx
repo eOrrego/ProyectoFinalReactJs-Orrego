@@ -9,22 +9,30 @@ import { Link } from "react-router-dom";
 const Checkout = () => {
     const [loading, setLoading] = useState(false);
     const [orderId, setOrderId] = useState("");
-    const [cartItemsCopy, setCartItemsCopy] = useState([]);
-    const [totalPrice, setTotalPrice] = useState(0);
 
     const { cartItems, getTotalPrice, clearCart } = useContext(CartContext);
 
     const { currentUser } = useAuth();
 
-    const createOrder = async ({ name, phone, email }) => {
+    const createOrder = async ({
+        phone,
+        cardholderName,
+        cardNumber,
+        expirationDate,
+        securityCode,
+        dni
+    }) => {
         setLoading(true);
 
         try {
             const objOrder = {
                 buyer: {
-                    name,
                     phone,
-                    email,
+                    cardholderName,
+                    cardNumber,
+                    expirationDate,
+                    securityCode,
+                    dni
                 },
                 items: cartItems,
                 total: getTotalPrice(),
@@ -62,8 +70,6 @@ const Checkout = () => {
                 await batch.commit();
                 const docRef = await addDoc(collection(db, "orders"), objOrder);
                 setOrderId(docRef.id);
-                setCartItemsCopy(cartItems);
-                setTotalPrice(getTotalPrice());
                 clearCart();
             } else {
                 console.log("Productos sin stock");
@@ -84,26 +90,28 @@ const Checkout = () => {
 
     if (orderId) {
         return (
-            <div>
-                <h1>Compra finalizada</h1>
-                {
-                    cartItemsCopy.map((item) => (
-                        <div key={item.id}>
-                            <p>Producto: {item.name}</p>
-                            <p>Cantidad: {item.quantity}</p>
-                            <p>Precio: ${item.price}</p>
-                        </div>
-                    ))
-                }
-                <p>Total: ${totalPrice}</p>
-                <p>Tu número de orden es {orderId}</p>
-                <p>Gracias por tu compra!</p>
-                <Link to="/">
-                    <button className="btn btn-outline-primary"
-                    >Volver al inicio</button>
-                </Link>
+            <div className="container-fluid">
+                <div className="row justify-content-center my-5">
+                    <div className="col-12 col-md-6 col-lg-4 border p-5 rounded-3 shadow bg-body mx-auto my-auto text-center">
+                        <h2 className="text-center mb-5">Gracias por tu compra!</h2>
+                        <p className="mb-5">
+                            Tu numero de orden es: <strong>{orderId}</strong>
+                        </p>
+                        <p className="mb-5">
+                            Podes ver el detalle de tu compra en el siguiente link:
+                            <br />
+                            <Link to={`/order/${orderId}`}>Detalle de la compra</Link>
+                        </p>
+                        <p className="mb-5">
+                            Tambien te enviamos un mail con el detalle de tu compra.
+                        </p>
+                        <p className="mb-5">
+                            <Link to="/">Volver al inicio</Link>
+                        </p>
+                    </div>
+                </div>
             </div>
-        )
+        );
     }
 
     return (
@@ -113,7 +121,7 @@ const Checkout = () => {
             <div
                 className="row justify-content-center my-5"
             >
-                <CheckoutForm createOrder={createOrder} />
+                <CheckoutForm onConfirm={createOrder} />
             </div>
         </div>
     )
