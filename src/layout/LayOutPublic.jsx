@@ -5,7 +5,7 @@ import { useAuth } from "../context/FirebaseAuthContext";
 import { useContext, useEffect } from "react";
 import { CartContext } from "../context/CartContext";
 import { db } from "../services/firebase/config.js";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDocs, query, where } from "firebase/firestore";
 
 const LayOutPublic = () => {
     const { currentUser } = useAuth();
@@ -25,6 +25,25 @@ const LayOutPublic = () => {
         };
         getCartItemsFirebase();
     }, [currentUser, setCartItems]);
+
+    // borrar el documento del carrito pendiente del usuario logueado en firebase
+    useEffect(() => {
+        const deleteCartPendingFirebase = async () => {
+            if (currentUser) {
+                const cartPendingCollection = collection(db, 'cartPending');
+                const cartPendingQuery = query(cartPendingCollection, where('userId', '==', currentUser.uid));
+                const cartPendingSnapshot = await getDocs(cartPendingQuery);
+                const cartPendingList = cartPendingSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                const cartPending = cartPendingList[0]?.cartItems || [];
+                if (cartPending.length > 0) {
+                    const cartPendingId = cartPendingList[0]?.id;
+                    const cartPendingRef = doc(db, 'cartPending', cartPendingId);
+                    await deleteDoc(cartPendingRef);
+                }
+            }
+        };
+        deleteCartPendingFirebase();
+    }, [currentUser]);
 
     return (
         <>
