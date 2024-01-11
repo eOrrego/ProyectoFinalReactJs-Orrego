@@ -23,8 +23,10 @@ const Profile = ({ cartItems, clearCart, currentUser, logout }) => {
     };
 
     const handleLogout = async () => {
-        await saveCartPending();
-        clearCart();
+        if (cartItems.length > 0) {
+            await saveCartPending();
+            clearCart();
+        }
         logout();
     };
 
