@@ -13,6 +13,7 @@ import LoginPage from "../views/LoginPage";
 import RegisterPage from "../views/RegisterPage";
 import ProfilePage from "../views/ProfilePage/ProfilePage";
 import OrderPage from "../views/OrderPage";
+import SearchPage from "../views/SearchPage";
 
 const router = createBrowserRouter([
     {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
             {
                 path: "/order/:orderId",
                 element: <OrderPage />,
+            },
+            {
+                path: "/search/:queryId",
+                element: <SearchPage />,
             }
         ],
     },
