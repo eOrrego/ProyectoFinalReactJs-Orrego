@@ -8,7 +8,7 @@ import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 
 const NavbarPage = () => {
-    const { getQuantity, clearCart } = useContext(CartContext);
+    const { cartItems, getQuantity, clearCart } = useContext(CartContext);
     const { currentUser, logout } = useAuth();
 
     return (
@@ -117,7 +117,6 @@ const NavbarPage = () => {
                                         Ingresar
                                     </Link>
                                 )}
-
                         </Nav>
                         <Form className="d-flex">
                             <Form.Control
@@ -133,6 +132,7 @@ const NavbarPage = () => {
                             </Button>
                         </Form>
                         <Profile
+                            cartItems={cartItems}
                             clearCart={clearCart}
                             currentUser={currentUser}
                             logout={logout}
