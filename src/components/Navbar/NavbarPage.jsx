@@ -2,14 +2,22 @@ import CartWidget from "../CartWidget/CartWidget";
 import { Navbar, Container, Nav, NavDropdown, Form, Button } from 'react-bootstrap';
 import { BsSearch } from 'react-icons/Bs';
 import Profile from "../Profile/Profile";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/FirebaseAuthContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 
 const NavbarPage = () => {
     const { cartItems, getQuantity, clearCart } = useContext(CartContext);
     const { currentUser, logout } = useAuth();
+    const [queryId, setQueryId] = useState("");
+
+    const navigate = useNavigate();
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        navigate(`/search/${queryId}`);
+    };
 
     return (
         <div>
@@ -134,18 +142,24 @@ const NavbarPage = () => {
                                     </Link>
                                 )}
                         </Nav>
-                        <Form className="d-flex">
+                        <Form className="d-flex" onSubmit={handleSearch}>
                             <Form.Control
                                 type="search"
                                 placeholder="Buscar Productos"
                                 className="me-2"
                                 aria-label="Search"
+                                onChange={(e) => setQueryId(e.target.value)}
                             />
-                            <Button variant="outline-success">
-                                <i>
-                                    <BsSearch />
-                                </i>
-                            </Button>
+                            {
+                                queryId ?
+                                    <Button variant="outline-success" type="submit">
+                                        <BsSearch />
+                                    </Button>
+                                    :
+                                    <Button variant="outline-success" type="submit" disabled>
+                                        <BsSearch />
+                                    </Button>
+                            }
                         </Form>
                         <Profile
                             cartItems={cartItems}
