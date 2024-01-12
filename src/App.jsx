@@ -3,7 +3,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { CartProvider } from "./context/CartContext";
 import { AuthProvider } from "./context/FirebaseAuthContext";
-
 const App = () => {
     return (
         <AuthProvider>
