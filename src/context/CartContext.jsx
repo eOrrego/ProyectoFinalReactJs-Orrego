@@ -35,14 +35,14 @@ const CartProvider = ({ children }) => {
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
     };
 
-    // funcion para actualizar el carrito del usuario cuando se actualiza el carrito
+    // actualiza el carrito cuando se loguea o desloguea el usuario
     useEffect(() => {
         if (currentUser) {
             getCart();
         }
     }, [currentUser]);
 
-    // funcion para actualizar el carrito del usuario cuando se actualiza el carrito
+    // actualiza el carrito cuando se agrega o remueve un item
     useEffect(() => {
         if (currentUser) {
             updateCart();
