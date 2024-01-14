@@ -66,8 +66,6 @@ Para poner en marcha este proyecto en tu entorno local, sigue estos pasos:
 
 ¡Las contribuciones son bienvenidas! Si encuentras errores, mejoras potenciales o nuevas características que quisieras agregar, por favor, abre un problema o envía una solicitud de extracción.
 
-## Licencia
-
-Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
-
 ¡Gracias por contribuir al Club de Beneficios E-commerce! Esperamos que encuentres útil este proyecto. ¡Feliz codificación!
+
+##orregoe@gmail.com
