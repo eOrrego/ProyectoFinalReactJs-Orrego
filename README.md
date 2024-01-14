@@ -68,4 +68,4 @@ Para poner en marcha este proyecto en tu entorno local, sigue estos pasos:
 
 ¡Gracias por contribuir al Club de Beneficios E-commerce! Esperamos que encuentres útil este proyecto. ¡Feliz codificación!
 
-##orregoe@gmail.com
+## orregoe@gmail.com
