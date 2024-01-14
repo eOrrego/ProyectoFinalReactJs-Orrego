@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import { BsPerson } from 'react-icons/Bs';
 import { Navigate, Link } from "react-router-dom";
 import { db } from "../../services/firebase/config.js";
-import { addDoc, collection, Timestamp } from "@firebase/firestore";
+import { addDoc, collection, Timestamp, doc, deleteDoc, query, where, getDocs } from "firebase/firestore";
 
 const Profile = ({ cartItems, clearCart, currentUser, logout }) => {
 
@@ -15,12 +15,23 @@ const Profile = ({ cartItems, clearCart, currentUser, logout }) => {
         };
 
         try {
-            const cartPendingRef = collection(db, "cartPending");
-            await addDoc(cartPendingRef, objCartPending);
+            //borro el carrito pendiente anterior si es que existe
+            const cartPendingCollection = collection(db, 'cartPending');
+            const cartPendingQuery = query(cartPendingCollection, where('userId', '==', currentUser.uid));
+            const cartPendingSnapshot = await getDocs(cartPendingQuery);
+            const cartPendingList = cartPendingSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            const cartPending = cartPendingList[0]?.cartItems || [];
+            if (cartPending.length >= 0) {
+                const cartPendingId = cartPendingList[0]?.id;
+                const cartPendingRef = doc(db, 'cartPending', cartPendingId);
+                await deleteDoc(cartPendingRef);
+            }
+            //creo un nuevo carrito pendiente con los items actuales del carrito del usuario logueado
+            await addDoc(collection(db, 'cartPending'), objCartPending);
         } catch (error) {
             console.log(error);
         }
-    };
+    }
 
     const handleLogout = async () => {
         if (cartItems.length > 0) {
